@@ -16,6 +16,6 @@ class LearningSource(Base):
     file_name: Mapped[str] = mapped_column(String(255), nullable=True)
     storage_key: Mapped[str] = mapped_column(String(512), nullable=True)
     status: Mapped[str] = mapped_column(String(32), nullable=False, default='pending')
-    metadata: Mapped[str] = mapped_column(Text, nullable=True)
+    extra_metadata: Mapped[str] = mapped_column(Text, nullable=True)
     error: Mapped[str] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, server_default=func.now())

@@ -17,5 +17,5 @@ class LearningAsset(Base):
     video_frames: Mapped[str] = mapped_column(Text, nullable=True)
     timeline_segments: Mapped[str] = mapped_column(Text, nullable=True)
     references: Mapped[str] = mapped_column(Text, nullable=True)
-    metadata: Mapped[str] = mapped_column(Text, nullable=True)
+    extra_metadata: Mapped[str] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, server_default=func.now())
