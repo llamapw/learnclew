@@ -36,7 +36,7 @@ def upgrade() -> None:
         sa.Column('identity_value', sa.String(length=255), nullable=False),
         sa.Column('credential_meta', sa.Text(), nullable=True),
         sa.Column('created_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+        sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
 
@@ -50,7 +50,7 @@ def upgrade() -> None:
         sa.Column('created_at', sa.DateTime(), nullable=False),
         sa.Column('updated_at', sa.DateTime(), nullable=False),
         sa.Column('last_studied_at', sa.DateTime(), nullable=True),
-        sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+        sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
 
@@ -66,7 +66,7 @@ def upgrade() -> None:
         sa.Column('metadata', sa.Text(), nullable=True),
         sa.Column('error', sa.Text(), nullable=True),
         sa.Column('created_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
 
@@ -85,7 +85,7 @@ def upgrade() -> None:
         sa.Column('error', sa.Text(), nullable=True),
         sa.Column('created_at', sa.DateTime(), nullable=False),
         sa.Column('updated_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id')
     )
 
@@ -101,7 +101,7 @@ def upgrade() -> None:
         sa.Column('references', sa.Text(), nullable=True),
         sa.Column('metadata', sa.Text(), nullable=True),
         sa.Column('created_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('project_id')
     )
@@ -116,7 +116,7 @@ def upgrade() -> None:
         sa.Column('study_plan_version', sa.String(length=64), nullable=True),
         sa.Column('qa_index_version', sa.String(length=64), nullable=True),
         sa.Column('generated_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('project_id')
     )
@@ -130,7 +130,7 @@ def upgrade() -> None:
         sa.Column('agent_profiles', sa.Text(), nullable=False),
         sa.Column('status', sa.String(length=32), nullable=False),
         sa.Column('generated_at', sa.DateTime(), nullable=False),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('project_id')
     )
@@ -145,7 +145,7 @@ def upgrade() -> None:
         sa.Column('completed_task_ids', sa.Text(), nullable=True),
         sa.Column('recent_knowledge_node_ids', sa.Text(), nullable=True),
         sa.Column('last_activity_at', sa.DateTime(), nullable=True),
-        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id']),
+        sa.ForeignKeyConstraint(['project_id'], ['learning_projects.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('project_id')
     )
